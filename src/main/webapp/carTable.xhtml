@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Dealers App</title>
+</h:head>
+
+<h:body>
+    <h:form>
+        <p:menubar>
+            <p:menuitem value="Welcome Page" action="welcome.xhtml?faces-redirect=true"/>
+            <p:menuitem value="View Your Cars" action="carTable.xhtml?faces-redirect=true"/>
+            <p:menuitem value="Logout" action="#{loginBean.logout}"/>
+        </p:menubar>
+    </h:form>
+
+    <p:messages id="messages" showDetail="true" autoUpdate="true"/>
+    <h:dataTable value="#{carTableBean.cars}" var="car">
+        <h:column>
+            <f:facet name="header">Brand</f:facet>
+            #{car.brand}
+        </h:column>
+        <h:column>
+            <f:facet name="header">Model</f:facet>
+            #{car.model}
+        </h:column>
+    </h:dataTable>
+
+    <h:form style="margin-top: 1em;">
+        <p:commandLink value="Add a new Car" action="car.xhtml?faces-redirect=true"/>
+    </h:form>
+</h:body>
+</html>
